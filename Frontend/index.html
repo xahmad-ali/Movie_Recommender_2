@@ -6,7 +6,7 @@
     }
 
     const getRecommendations = async (movie) => {
-        const movies = await fetch("http://127.0.0.1:5000/recommend", {
+        const movies = await fetch("https://movie-recommender-2-t93w.onrender.com/recommend", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
