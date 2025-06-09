@@ -1,0 +1,23 @@
+*.pkl
+# Ignore Python bytecode and cache
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+
+# Ignore environment files
+.env
+
+
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+

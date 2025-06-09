@@ -1,0 +1,88 @@
+<script>
+    const getName = () => {
+        const name = document.getElementById("name").value
+        console.log(name)
+        getRecommendations(name)
+    }
+
+    const getRecommendations = async (movie) => {
+        const movies = await fetch("http://127.0.0.1:5000/recommend", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ movie_name: movie })
+        })
+        const recommendations = await movies.json(); // Assuming the server returns JSON
+        console.log("Recommended movies:", recommendations);
+
+
+        const displayDiv = document.getElementById("moviesDisplay")
+        displayDiv.innerHTML = "" // emptying the mainDisplayDiv        
+
+        if (recommendations.recommended_movies.length > 0) {
+            recommendations.recommended_movies.forEach((movie) => {
+
+            // Wikipedia URL construction
+            const query = movie.replace(/\s+/g, '_'); // Replace spaces with '_'
+            const wikipediaUrl = `https://en.wikipedia.org/wiki/${query}`;
+
+                // creating div's
+                const movieDiv = document.createElement("div")
+                movieDiv.classList.add("each_movie")
+
+                // Create img tag
+                const movieImage = document.createElement("img")
+                movieImage.classList.add("images")
+                movieImage.src = "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Batman_Begins_Poster.jpg/220px-Batman_Begins_Poster.jpg"; // Placeholder image
+
+                
+                // movieImage.src = "https://m.media-amazon.com/images/M/MV5BMTU0NTkyMzA1M15BMl5BanBnXkFtZTcwODM2NjE1Ng@@._V1_FMjpg_UX1000_.jpg";
+
+                //Create h3 tags
+                const movieName = document.createElement("h3")
+                movieName.classList.add("h_third")
+                movieName.innerText = movie
+
+                // Append the img and h3 to the movieDiv
+                movieDiv.appendChild(movieImage)
+                movieDiv.appendChild(movieName)
+
+                //Append entire Block to parent div
+                displayDiv.appendChild(movieDiv)
+
+            });
+        } else {
+            recommendationsDiv.innerHTML = "<h3>No recommendations found!</h3>";
+        }
+    }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">Movie Recommender</div>
+    <div class="main">
+        <div class="div_first">
+            <h1 class="h_first">We Recommend You Best movies</h1>
+            <h2 class="h_second">Type your movie name to get similar movies </h2>
+            <input class="input_movie" type="text" id="name" placeholder="Batman Begins">
+            <button class="input_button" onclick="getName()">Recommend</button>
+            <div class="Recommended_movies" id="moviesDisplay">
+                <!-- <div class="each_movie">
+                            <img class="images" src="https://m.media-amazon.com/images/M/MV5BMTU0NTkyMzA1M15BMl5BanBnXkFtZTcwODM2NjE1Ng@@._V1_FMjpg_UX1000_.jpg" alt=""/>
+                        <h3 class="h_third" id="movie_names"></h3>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

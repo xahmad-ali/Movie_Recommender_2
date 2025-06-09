@@ -1,0 +1,151 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Create a container for the background image */
+}
+
+.main::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://miro.medium.com/v2/resize:fit:1142/1*eYtze01BE5EzuxR_1qT9SA.jpeg);
+    background-size: contain;
+    background-blend-mode: soft-light;
+    filter: blur(3px); /* Apply blur only to the background */
+    z-index: -1; /* Ensure the background stays behind the content */
+    
+}
+
+.div_first{
+    height: 90%;
+    width: 60%;
+    border: 3px;
+    border-color: blue;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.h_first{
+    font-size: 48px;;
+    font-weight: bold;
+    margin-bottom: 56px;
+}
+
+.h_second{
+    font-size: 22px;
+    font-weight:large;
+    margin-bottom: 4px;
+}
+
+.input_movie{
+    width: 100%;
+    height: 48px;
+    border-radius:12px;
+    border-style: none;
+    outline: none;
+    background-color:transparent;
+    color: white;
+    font-size: large;
+    padding: 4px;
+}
+
+.input_button{
+    width: 60%;
+    height: 48px;
+    background-color: #8B0000;
+    outline: none;
+    border-style: none;
+    border-radius: 12px;
+    margin-top: 12px;
+    font-weight:bolder;
+    cursor: pointer;
+    border-style:groove;
+    border-color: rgb(173, 170, 170);
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.input_button:hover {
+    background-color: #660000;
+}
+
+.Recommended_movies{
+    width: 100%;
+    height: 60%;
+    border: 3px;
+    border-color: black;
+    margin-top: 32px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.each_movie{
+    margin: 2px;
+    padding: 2px;
+    width: 40%;
+    height: 100%;
+    border-color: black;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    position: relative;
+}
+
+.images{
+    width: 95%;
+    height: 85%;
+    object-position: cover;
+    position: absolute;
+    border-radius: 2px;
+    transition: width 200ms;
+}
+
+.images:hover{
+    width: 96%;
+    height: 86%;
+}
+
+.h_third{
+    text-align: left;
+    font-size: small;
+    font-style: italic;
+    font-stretch:semi-condensed;
+    position: absolute;
+    top:86%
+}
+
+/* Add a red header bar */
+.header {
+    background-color: #8B0000;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
